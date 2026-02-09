@@ -3,10 +3,16 @@ import matplotlib.pyplot as plt
 
 df=pd.read_csv("telecalling_performance.csv")
 
-fig, ax = plt.subplots(1,0, figsize=(12,5))
-ax[0].plot(df["day"],df["calls_made"])
-ax[0].set_title("Calling Activity")
-ax[0].set_xlabel("days")
-ax[0].set_ylabel("calls")
+def plot(x,y,title,xlab,ylab,p_name):
+    p_name(x,y)
+    plt.title(title)
+    plt.xlabel(xlab)
+    plt.ylabel(ylab)
+    plt.show()
 
-plt.show()
+#1
+plot(df["day"],df["calls_made"],"call_activity","day","calls",plt.plot)
+
+#2
+plot(df["avg_call_duration"],df["conversions"],"Duration impact on conversions","avg_duration","coversions",plt.scatter)
+
